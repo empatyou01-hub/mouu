@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Received...</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0b0f19;
+            color: #4ade80; /* Hijau neon radar */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+        .container {
+            border: 1px solid #4ade80;
+            padding: 40px;
+            border-radius: 10px;
+            background: rgba(74, 222, 128, 0.05);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+            max-width: 80%;
+        }
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #4ade80; } }
+        
+        #secret-content { display: none; margin-top: 20px; color: #f0f0f0; }
+        button {
+            background: transparent;
+            color: #4ade80;
+            border: 1px solid #4ade80;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        button:hover { background: #4ade80; color: #0b0f19; }
+        .mountains { font-size: 3rem; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="mountains">⛰️</div>
+        <div class="typing">Incoming signal from the mountains...</div>
+        
+        <button id="btn" onclick="reveal()">DECODE MESSAGE</button>
+
+        <div id="secret-content">
+            <p>> STATUS: ENCRYPTED</p>
+            <p>> MESSAGE: "Buat pendaki yang suka lupa istirahat... Semangat ya sekolah/kerjanya! Ada orang yang diam-diam selalu doain kamu dari jauh. ✨"</p>
+            <p>> SENDER: [UNKNOWN_ADMIREER]</p>
+        </div>
+    </div>
+
+    <script>
+        function reveal() {
+            document.getElementById('secret-content').style.display = 'block';
+            document.getElementById('btn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
