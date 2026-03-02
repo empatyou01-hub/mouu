@@ -1,37 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Night Sky</title>
+    <title>Night Sky Special</title>
     <style>
-        body { margin: 0; background: #090A0F; height: 100vh; display: flex; justify-content: center; align-items: center; font-family: sans-serif; color: white; overflow: hidden; }
-        .stars { position: absolute; width: 100%; height: 100%; }
-        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; }
+        body { margin: 0; background: #060b14; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white; }
+        
+        /* Bintang-bintang */
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: twinkle var(--duration) infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+
+        /* Bulan Sabit */
+        .moon { position: absolute; top: 50px; right: 50px; width: 80px; height: 80px; background: transparent; border-radius: 50%; box-shadow: 15px 15px 0 0 #f1c40f; filter: drop-shadow(0 0 10px #f1c40f); animation: float 4s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
         .container { text-align: center; z-index: 10; }
-        .tent { font-size: 80px; cursor: pointer; display: block; margin-bottom: 10px; }
-        .hint { font-size: 14px; color: #888; animation: blink 1s infinite; }
-        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.3;} 100% {opacity: 1;} }
-        #msg { display: none; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); }
-        .btn { display: inline-block; background: #25d366; color: white; text-decoration: none; padding: 10px 20px; border-radius: 20px; margin-top: 15px; font-weight: bold; }
+        .tent { font-size: 80px; cursor: pointer; transition: 0.3s; filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        
+        .hint { margin-top: 15px; font-size: 14px; color: #f1c40f; letter-spacing: 2px; text-transform: uppercase; animation: blink 1.5s infinite; font-weight: bold; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+        #message { display: none; margin-top: 20px; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: fadeIn 1s; max-width: 80%; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        
+        .btn-wa { display: inline-block; background: linear-gradient(135deg, #25d366, #128c7e); color: white; text-decoration: none; padding: 12px 30px; border-radius: 50px; margin-top: 20px; font-weight: bold; font-size: 15px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: 0.3s; }
+        .btn-wa:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
+    <div class="moon"></div>
+    
+    <div id="starContainer"></div>
+
     <div class="container">
-        <div id="setup">
-            <div class="tent" onclick="show()">⛺</div>
-            <div class="hint">-- klik tendanya --</div>
+        <div id="interactiveArea">
+            <div class="tent" onclick="openMessage()">⛺</div>
+            <div class="hint">klik tendanya</div>
         </div>
-        <div id="msg">
-            <p>Semangat buat hari ini! ✨</p>
-            <a href="https://wa.me/6281389295689?text=Makasih%20ya!" class="btn">Balas 💬</a>
+        
+        <div id="message">
+            <p style="margin: 0; font-size: 18px; line-height: 1.5;">"Semangat buat hari ini ya! ✨<br>Semoga harimu menyenangkan."</p>
+            <a href="https://wa.me/6281389295689?text=Makasih%20semangatnya!%20Bagus%20banget%20bintangnya" class="btn-wa">Balas 💬</a>
         </div>
     </div>
+
     <script>
-        function show() {
-            document.getElementById('setup').style.display = 'none';
-            document.getElementById('msg').style.display = 'block';
+        // Buat Bintang Secara Otomatis
+        const starContainer = document.getElementById('starContainer');
+        const starCount = 150; // Jumlah bintang
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            // Posisi acak
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            
+            // Ukuran acak
+            const size = Math.random() * 3;
+            
+            star.style.left = x + '%';
+            star.style.top = y + '%';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            
+            // Durasi kedip acak
+            const duration = Math.random() * 3 + 2;
+            star.style.setProperty('--duration', duration + 's');
+            
+            starContainer.appendChild(star);
+        }
+
+        function openMessage() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('interactiveArea').style.display = 'none';
         }
     </script>
 </body>
 </html>
+
 
