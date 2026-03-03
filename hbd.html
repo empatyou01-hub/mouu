@@ -19,7 +19,7 @@
         .airdrop { font-size: 80px; cursor: pointer; animation: drop 2s infinite ease-in-out; display: inline-block; filter: drop-shadow(0 0 20px #ff4500); }
         @keyframes drop { 0%, 100% { transform: translateY(-15px); } 50% { transform: translateY(10px); } }
         
-        .hint { margin-top: 20px; font-size: 16px; color: #ffcc00; letter-spacing: 3px; animation: blink 1s infinite; text-shadow: 2px 2px 0 #000; }
+        .hint { margin-top: 20px; font-size: 16px; color: #ffcc00; letter-spacing: 3px; animation: blink 1.5s infinite; text-shadow: 2px 2px 0 #000; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
         #message { display: none; margin-top: 20px; background: rgba(0, 0, 0, 0.95); border: 3px solid #ffcc00; padding: 30px; border-radius: 0; width: 280px; box-shadow: 0 0 30px rgba(255, 69, 0, 0.6); }
@@ -43,7 +43,7 @@
             <h2 class="booyah-title">BOOYAH!</h2>
             <p style="font-size: 18px; margin: 0; color: #fff; line-height: 1.4;">HBD BUL. WISH U ALL THE BEST!</p>
             <p style="font-size: 20px; margin-top: 15px; color: #ffcc00; text-shadow: 1px 1px 5px rgba(255,255,255,0.3);">SELAMAT KEPALA DUA! ✨</p>
-            <a href="https://wa.me/6281389295689?text=BOOYAH!%20Makasih%20ucapannya%20Bule" class="btn-wa">KIRIM BALASAN 💬</a>
+            <a href="https://wa.me/6281389295689?text=BOOYAH!%20Makasih%20ucapannya%20Firyal" class="btn-wa">KIRIM BALASAN 💬</a>
         </div>
     </div>
 
@@ -51,20 +51,3 @@
         const container = document.getElementById('starContainer');
         for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            const size = (Math.random() * 3 + 2) + 'px'; 
-            star.style.width = size;
-            star.style.height = size;
-            star.style.setProperty('--duration', (Math.random() * 3 + 1) + 's');
-            container.appendChild(star);
-        }
-
-        function openMessage() {
-            document.getElementById('message').style.display = 'block';
-            document.getElementById('interactiveArea').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
