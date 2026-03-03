@@ -7,30 +7,47 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
-        body { margin: 0; background: #05080f; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Black Ops One', sans-serif; color: white; }
+        body { 
+            margin: 0; 
+            background: #05080f; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            overflow: hidden; 
+            font-family: 'Black Ops One', system-ui; 
+            color: white; 
+            /* Nuansa Latar Rumah FF Purgatory */
+            background-image: url('https://i.pinimg.com/originals/de/72/7a/de727a8585e5d5e5e5e5e5e5e5e5e5e5.jpg');
+            background-size: cover;
+            background-position: center;
+        }
         
-        /* Efek Langit Bara Api */
+        /* Efek Langit Bara Api Tetap Ada */
         .star { position: absolute; background: #ff4500; border-radius: 50%; z-index: 1; animation: glow var(--duration) infinite; box-shadow: 0 0 5px #ff4500; }
         @keyframes glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.5); } }
 
-        .container { text-align: center; z-index: 10; position: relative; }
+        .container { text-align: center; z-index: 10; position: relative; width: 100%; }
         
-        /* Area Game Assets */
-        .game-assets { cursor: pointer; display: flex; flex-direction: column; align-items: center; }
+        /* Area Interaktif untuk AirDrop dan M4A1 */
+        .game-assets { display: flex; justify-content: center; align-items: flex-end; gap: 15px; cursor: pointer; position: relative; margin-bottom: 20px;}
 
-        /* Karakter Kelly (Pakai Ikon Stabil) */
-        .char-label { font-size: 50px; margin-bottom: 5px; filter: drop-shadow(0 0 10px #ffcc00); animation: bounce 1.5s infinite alternate; }
-        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+        /* Senjata M4A1 di Samping AirDrop */
+        .m4a1-icon { font-size: 50px; filter: drop-shadow(0 0 10px #ffcc00); animation: weapon-bounce 1.5s infinite alternate ease-in-out; }
+        @keyframes weapon-bounce { from { transform: translateY(0); } to { transform: translateY(-8px); } }
 
-        /* Ikon AirDrop */
-        .airdrop { font-size: 70px; filter: drop-shadow(0 0 20px #ff4500); }
+        /* Ikon AirDrop Besar */
+        .airdrop { font-size: 80px; animation: drop 2s infinite ease-in-out; filter: drop-shadow(0 0 20px #ff4500); }
+        @keyframes drop { 0%, 100% { transform: translateY(-15px); } 50% { transform: translateY(10px); } }
         
-        .hint { margin-top: 15px; font-size: 14px; color: #ffcc00; letter-spacing: 2px; animation: blink 1.5s infinite; text-shadow: 2px 2px 0 #000; }
+        .hint { font-size: 16px; color: #ffcc00; letter-spacing: 3px; animation: blink 1.5s infinite; text-shadow: 2px 2px 0 #000; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
         /* Pesan Booyah */
-        #message { display: none; background: rgba(0, 0, 0, 0.95); border: 3px solid #ffcc00; padding: 30px; border-radius: 0; width: 280px; box-shadow: 0 0 30px rgba(255, 69, 0, 0.6); }
+        #message { display: none; background: rgba(0, 0, 0, 0.95); border: 3px solid #ffcc00; padding: 30px; width: 280px; box-shadow: 0 0 30px rgba(255, 69, 0, 0.6); text-align: center; }
+        
         .booyah-title { color: #ffcc00; font-size: 32px; margin: 0 0 15px 0; font-style: italic; text-shadow: 3px 3px 0 #ff4500; }
+        
         .btn-wa { display: inline-block; background: linear-gradient(to bottom, #ffcc00, #ff8800); color: black; text-decoration: none; padding: 12px 30px; border-radius: 5px; margin-top: 25px; font-weight: bold; border: 2px solid #fff; font-size: 11px; }
     </style>
 </head>
@@ -40,38 +57,11 @@
     <div class="container">
         <div id="interactiveArea" onclick="openMessage()">
             <div class="game-assets">
-                <div class="char-label">🏃‍♀️</div> 
+                <div class="m4a1-icon">🔫</div>
                 <div class="airdrop">📦</div>
             </div>
             <div class="hint">-- TAP TO LOOT --</div>
         </div>
         
         <div id="message">
-            <h2 class="booyah-title">BOOYAH!</h2>
-            <p style="font-size: 18px; margin: 0; color: #fff; line-height: 1.4;">HBD BUL. WISH U ALL THE BEST!</p>
-            <p style="font-size: 20px; margin-top: 15px; color: #ffcc00; text-shadow: 1px 1px 5px rgba(255,255,255,0.3);">SELAMAT KEPALA DUA! ✨</p>
-            <a href="https://wa.me/6281389295689?text=BOOYAH!%20Makasih%20ucapannya%20Firyal" class="btn-wa">KIRIM BALASAN 💬</a>
-        </div>
-    </div>
-
-    <script>
-        const container = document.getElementById('starContainer');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            const size = (Math.random() * 3 + 2) + 'px'; 
-            star.style.width = size;
-            star.style.height = size;
-            star.style.setProperty('--duration', (Math.random() * 3 + 1) + 's');
-            container.appendChild(star);
-        }
-
-        function openMessage() {
-            document.getElementById('message').style.display = 'block';
-            document.getElementById('interactiveArea').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+            <h2 class="booyah-title">BOOYAH
