@@ -3,101 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD Bule! 🏆 BOOYAH 20!</title>
+    <title>HBD Bule! 🏆 BOOYAH!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
-        /* Warna Latar & Bara Api Tetap */
-        body { 
-            margin: 0; 
-            background: #05080f; 
-            height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            overflow: hidden; 
-            font-family: 'Black Ops One', system-ui; 
-            color: white; 
-        }
+        body { margin: 0; background: #05080f; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Black Ops One', system-ui; color: white; }
         
-        /* Efek Langit Bara Api */
         .star { position: absolute; background: #ff4500; border-radius: 50%; z-index: 1; animation: glow var(--duration) infinite; box-shadow: 0 0 5px #ff4500; }
         @keyframes glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.5); } }
 
-        /* Container untuk Seluruh Konten */
-        .main-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            width: 100%;
-            z-index: 10;
-            position: relative;
-        }
+        .moon { position: absolute; top: 40px; right: 40px; width: 50px; height: 50px; background: transparent; border-radius: 50%; box-shadow: 12px 12px 0 0 #ffcc00; filter: drop-shadow(0 0 15px #ffcc00); z-index: 2; }
 
-        /* Container untuk Kelly & AirDrop */
-        #gameAssets { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            cursor: pointer; 
-            text-align: center;
-            width: auto;
-        }
+        .main-container { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; position: relative; }
+        
+        #gameAssets { display: flex; flex-direction: column; align-items: center; cursor: pointer; text-align: center; }
 
-        /* Kelly Di Atas AirDrop */
-        .kelly-center { 
-            width: 120px; /* Diperkecil dikit biar lebih rapi */
-            height: auto;
-            margin-bottom: -15px; /* Lebih mepet */
+        /* Kelly dalam bentuk Siluet/Ikon yang Pasti Muncul */
+        .kelly-icon { 
+            font-size: 80px;
+            margin-bottom: -10px;
             filter: drop-shadow(0 0 15px #ffcc00);
             animation: bounce 1.5s infinite alternate ease-in-out;
         }
 
-        /* Ikon AirDrop Besar */
-        .airdrop { 
-            font-size: 80px; 
-            margin: 0;
-            animation: drop 2s infinite ease-in-out; 
-            filter: drop-shadow(0 0 20px #ff4500); 
-        }
+        .airdrop { font-size: 80px; animation: drop 2s infinite ease-in-out; filter: drop-shadow(0 0 20px #ff4500); }
         
-        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
         @keyframes drop { 0%, 100% { transform: translateY(-10px); } 50% { transform: translateY(5px); } }
         
-        .hint { 
-            font-size: 16px; 
-            color: #ffcc00; 
-            letter-spacing: 2px; 
-            animation: blink 1.5s infinite; 
-            text-shadow: 2px 2px 0 #000; 
-            margin-top: 20px;
-        }
+        .hint { font-size: 16px; color: #ffcc00; letter-spacing: 2px; animation: blink 1.5s infinite; text-shadow: 2px 2px 0 #000; margin-top: 20px; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
-        /* Kotak Pesan Booyah */
-        #message { 
-            display: none; 
-            background: rgba(0, 0, 0, 0.95); 
-            border: 3px solid #ffcc00; 
-            padding: 30px; 
-            border-radius: 0; 
-            width: 280px; 
-            box-shadow: 0 0 40px rgba(255, 69, 0, 0.7); 
-            text-align: center;
-        }
-        
+        #message { display: none; background: rgba(0, 0, 0, 0.95); border: 3px solid #ffcc00; padding: 30px; width: 280px; box-shadow: 0 0 40px rgba(255, 69, 0, 0.7); text-align: center; }
         .booyah-title { color: #ffcc00; font-size: 32px; margin: 0 0 15px 0; font-style: italic; text-shadow: 3px 3px 0 #ff4500; }
-        .btn-wa { display: inline-block; background: linear-gradient(to bottom, #ffcc00, #ff8800); color: black; text-decoration: none; padding: 12px 30px; border-radius: 5px; margin-top: 25px; font-weight: bold; border: 2px solid #fff; transition: 0.2s; font-size: 11px; }
+        .btn-wa { display: inline-block; background: linear-gradient(to bottom, #ffcc00, #ff8800); color: black; text-decoration: none; padding: 12px 30px; border-radius: 5px; margin-top: 25px; font-weight: bold; border: 2px solid #fff; font-size: 11px; }
     </style>
 </head>
 <body>
     <div id="starContainer"></div>
+    <div class="moon"></div>
 
     <div class="main-container">
         <div id="gameAssets" onclick="openMessage()">
-            <img src="https://api.duniagames.co.id/api/content/upload/file/14299446411591090332.png" alt="Kelly FF" class="kelly-center">
+            <div class="kelly-icon">👧</div>
             <div class="airdrop">📦</div>
             <div class="hint">-- TAP TO LOOT --</div>
         </div>
@@ -111,7 +59,6 @@
     </div>
 
     <script>
-        // Animasi Langit Bara Api Tetap Berfungsi
         const container = document.getElementById('starContainer');
         for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
@@ -125,7 +72,6 @@
             container.appendChild(star);
         }
 
-        // Fungsi Buka Pesan Tetap Berfungsi
         function openMessage() {
             document.getElementById('message').style.display = 'block';
             document.getElementById('gameAssets').style.display = 'none';
