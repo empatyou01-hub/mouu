@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD Bule! 🏆 BOOYAH 20! 🏃‍♀️</title>
+    <title>HBD Bule! 🏆 BOOYAH 20!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
         body { margin: 0; background: #05080f; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: 'Black Ops One', system-ui; color: white; }
         
+        /* Efek Bara Api */
         .star { position: absolute; background: #ff4500; border-radius: 50%; z-index: 1; animation: glow var(--duration) infinite; box-shadow: 0 0 5px #ff4500; }
         @keyframes glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.5); } }
 
@@ -16,21 +17,21 @@
 
         .container { text-align: center; z-index: 10; position: relative; }
         
-        /* Area Interaktif untuk Kelly dan AirDrop */
-        .interactive-assets { display: flex; justify-content: center; align-items: flex-end; gap: 15px; cursor: pointer; position: relative; }
+        /* Area Karakter & AirDrop */
+        .game-assets { display: flex; justify-content: center; align-items: flex-end; gap: 10px; cursor: pointer; margin-bottom: 20px; }
 
-        /* Karakter Kelly Pixel Art */
-        .kelly-pixel { width: 60px; height: 60px; background: url('data:image/png;base64,iVBORw0KGgoAAAANSUserif') no-repeat; background-size: contain; filter: drop-shadow(0 0 10px #ffcc00); animation: kelly-run 0.6s steps(4) infinite; }
-        @keyframes kelly-run { from { background-position: 0 0; } to { background-position: -240px 0; } }
+        /* Karakter Pengganti Kelly (Emoji Cewek Lari) */
+        .char-kelly { font-size: 60px; animation: run 0.8s infinite alternate ease-in-out; filter: drop-shadow(0 0 10px #ffcc00); }
+        @keyframes run { from { transform: translateX(-10px) rotate(-5deg); } to { transform: translateX(10px) rotate(5deg); } }
 
         /* Ikon AirDrop */
-        .airdrop { font-size: 80px; animation: drop 2s infinite ease-in-out; display: inline-block; filter: drop-shadow(0 0 20px #ff4500); }
+        .airdrop { font-size: 80px; animation: drop 2s infinite ease-in-out; filter: drop-shadow(0 0 20px #ff4500); }
         @keyframes drop { 0%, 100% { transform: translateY(-15px); } 50% { transform: translateY(10px); } }
         
-        .hint { margin-top: 20px; font-size: 16px; color: #ffcc00; letter-spacing: 3px; animation: blink 1.5s infinite; text-shadow: 2px 2px 0 #000; }
+        .hint { font-size: 16px; color: #ffcc00; letter-spacing: 3px; animation: blink 1.5s infinite; text-shadow: 2px 2px 0 #000; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
-        #message { display: none; margin-top: 20px; background: rgba(0, 0, 0, 0.95); border: 3px solid #ffcc00; padding: 30px; border-radius: 0; width: 280px; box-shadow: 0 0 30px rgba(255, 69, 0, 0.6); }
+        #message { display: none; background: rgba(0, 0, 0, 0.95); border: 3px solid #ffcc00; padding: 30px; border-radius: 0; width: 280px; box-shadow: 0 0 30px rgba(255, 69, 0, 0.6); }
         
         .booyah-title { color: #ffcc00; font-size: 32px; margin: 0 0 15px 0; font-style: italic; text-shadow: 3px 3px 0 #ff4500; }
         
@@ -43,8 +44,8 @@
 
     <div class="container">
         <div id="interactiveArea" onclick="openMessage()">
-            <div class="interactive-assets">
-                <div class="kelly-pixel"></div>
+            <div class="game-assets">
+                <div class="char-kelly">🏃‍♀️</div>
                 <div class="airdrop">📦</div>
             </div>
             <div class="hint">-- TAP TO LOOT --</div>
