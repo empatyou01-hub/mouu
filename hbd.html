@@ -12,19 +12,41 @@
         .star { position: absolute; background: #ff4500; border-radius: 50%; z-index: 1; animation: glow var(--duration) infinite; box-shadow: 0 0 5px #ff4500; }
         @keyframes glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.5); } }
 
-        .moon { position: absolute; top: 40px; right: 40px; width: 50px; height: 50px; background: transparent; border-radius: 50%; box-shadow: 12px 12px 0 0 #ffcc00; filter: drop-shadow(0 0 15px #ffcc00); z-index: 2; }
-
         .main-container { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; position: relative; width: 100%; }
         
         #gameAssets { display: flex; flex-direction: column; align-items: center; cursor: pointer; text-align: center; }
 
-        /* GAMBAR KELLY ASLI DARI LINK STABIL */
-        .kelly-img { 
-            width: 130px; 
-            height: auto;
-            margin-bottom: -10px;
-            filter: drop-shadow(0 0 15px #ffcc00);
+        /* MEMBUAT KELLY DARI KODE (PASTI MUNCUL) */
+        .kelly-made {
+            width: 80px;
+            height: 100px;
+            background: #ffcc00; /* Warna baju kuning Kelly */
+            position: relative;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: -5px;
             animation: bounce 1.5s infinite alternate ease-in-out;
+            box-shadow: 0 0 20px #ffcc00;
+        }
+        /* Rambut Kelly */
+        .kelly-made::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 5px;
+            width: 70px;
+            height: 40px;
+            background: #4b2c20;
+            border-radius: 20px 20px 0 0;
+        }
+        /* Bando Kelly */
+        .kelly-made::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 80px;
+            height: 8px;
+            background: white;
         }
 
         .airdrop { font-size: 80px; animation: drop 2s infinite ease-in-out; filter: drop-shadow(0 0 20px #ff4500); }
@@ -42,41 +64,14 @@
 </head>
 <body>
     <div id="starContainer"></div>
-    <div class="moon"></div>
 
     <div class="main-container">
         <div id="gameAssets" onclick="openMessage()">
-            <img src="https://i.pinimg.com/originals/9e/7b/4b/9e7b4b3b1e8e5e5e5e5e5e5e5e5e5e5e.png" alt="Kelly FF" class="kelly-img" onerror="this.src='https://api.duniagames.co.id/api/content/upload/file/14299446411591090332.png'">
+            <div class="kelly-made"></div>
             <div class="airdrop">📦</div>
             <div class="hint">-- TAP TO LOOT --</div>
         </div>
         
         <div id="message">
             <h2 class="booyah-title">BOOYAH!</h2>
-            <p style="font-size: 18px; margin: 0; color: #fff; line-height: 1.4;">HBD BUL. WISH U ALL THE BEST!</p>
-            <p style="font-size: 20px; margin-top: 15px; color: #ffcc00; text-shadow: 1px 1px 5px rgba(255,255,255,0.3);">SELAMAT KEPALA DUA! ✨</p>
-            <a href="https://wa.me/6281389295689?text=BOOYAH!%20Makasih%20ucapannya%20Firyal" class="btn-wa">KIRIM BALASAN 💬</a>
-        </div>
-    </div>
-
-    <script>
-        const container = document.getElementById('starContainer');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            const size = (Math.random() * 3 + 2) + 'px'; 
-            star.style.width = size;
-            star.style.height = size;
-            star.style.setProperty('--duration', (Math.random() * 3 + 1) + 's');
-            container.appendChild(star);
-        }
-
-        function openMessage() {
-            document.getElementById('message').style.display = 'block';
-            document.getElementById('gameAssets').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+            <p style="font-size: 18
