@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD Bule! 🏆 BOOYAH!</title>
+    <title>HBD Bule! 🏆 BOOYAH 20!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
@@ -14,13 +14,14 @@
 
         .moon { position: absolute; top: 40px; right: 40px; width: 50px; height: 50px; background: transparent; border-radius: 50%; box-shadow: 12px 12px 0 0 #ffcc00; filter: drop-shadow(0 0 15px #ffcc00); z-index: 2; }
 
-        .main-container { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; position: relative; }
+        .main-container { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; position: relative; width: 100%; }
         
         #gameAssets { display: flex; flex-direction: column; align-items: center; cursor: pointer; text-align: center; }
 
-        /* Kelly dalam bentuk Siluet/Ikon yang Pasti Muncul */
-        .kelly-icon { 
-            font-size: 80px;
+        /* GAMBAR KELLY ASLI DARI LINK STABIL */
+        .kelly-img { 
+            width: 130px; 
+            height: auto;
             margin-bottom: -10px;
             filter: drop-shadow(0 0 15px #ffcc00);
             animation: bounce 1.5s infinite alternate ease-in-out;
@@ -45,7 +46,7 @@
 
     <div class="main-container">
         <div id="gameAssets" onclick="openMessage()">
-            <div class="kelly-icon">👧</div>
+            <img src="https://i.pinimg.com/originals/9e/7b/4b/9e7b4b3b1e8e5e5e5e5e5e5e5e5e5e5e.png" alt="Kelly FF" class="kelly-img" onerror="this.src='https://api.duniagames.co.id/api/content/upload/file/14299446411591090332.png'">
             <div class="airdrop">📦</div>
             <div class="hint">-- TAP TO LOOT --</div>
         </div>
