@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD Bule! 🎂</title>
+    <style>
+        body { margin: 0; background: #05080f; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; font-family: sans-serif; color: white; }
+        .star { position: absolute; background: white; border-radius: 50%; z-index: 1; animation: twinkle var(--duration) infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
+        .moon { position: absolute; top: 40px; right: 40px; width: 50px; height: 50px; background: transparent; border-radius: 50%; box-shadow: 12px 12px 0 0 #f1c40f; filter: drop-shadow(0 0 15px #f1c40f); z-index: 2; }
+        .container { text-align: center; z-index: 10; position: relative; }
+        .cake { font-size: 80px; cursor: pointer; animation: bounce 2s infinite; display: inline-block; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .hint { margin-top: 15px; font-size: 14px; color: #f1c40f; letter-spacing: 2px; animation: blink 1.5s infinite; font-weight: bold; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        #message { display: none; margin-top: 20px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); width: 260px; }
+        .btn-wa { display: inline-block; background: #25d366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 50px; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="moon"></div>
+    <div id="starContainer"></div>
+    <div class="container">
+        <div id="interactiveArea">
+            <div class="cake" onclick="openMessage()">🎂</div>
+            <div class="hint">-- KLIK KUENYA --</div>
+        </div>
+        <div id="message">
+            <h2 style="margin: 0 0 10px 0; color: #f1c40f;">Happy Birthday!</h2>
+            <p style="font-size: 18px; margin: 0; line-height: 1.5;">hbd bul. wish u all the best! ✨</p>
+            <a href="https://wa.me/6281389295689?text=Makasih%20ucapannya%20Firyal!" class="btn-wa">Kirim Makasih 💬</a>
+        </div>
+    </div>
+    <script>
+        const container = document.getElementById('starContainer');
+        for (let i = 0; i < 120; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            const size = (Math.random() * 3 + 2) + 'px'; 
+            star.style.width = size; star.style.height = size;
+            star.style.setProperty('--duration', (Math.random() * 3 + 1) + 's');
+            container.appendChild(star);
+        }
+        function openMessage() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('interactiveArea').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
